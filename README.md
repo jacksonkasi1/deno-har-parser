@@ -1,4 +1,3 @@
-
 # Deno HAR Parser
 
 This project provides a simple Deno TypeScript script to extract specific data from a `.har` (HTTP Archive) file. It parses network requests and responses and extracts the URL, method, payload (query params, body), response data, and specific headers (like `Authorization`, `Cookie`, `token`, or `key`).
@@ -12,15 +11,19 @@ This project provides a simple Deno TypeScript script to extract specific data f
   - Response status and body
   - Specific headers (Authentication, Cookies, Tokens, etc.)
 - Supports regex filtering for authentication-related headers.
+- **New**: Asks the user whether to output data in `JSON` or `text` format.
+- Outputs extracted data to either a `JSON` or `text` file based on user selection.
 
 ## Project Structure
 
-```
+```sh
 deno-har-parser/
 │
 ├── src/
 │   ├── helpers/
 │   │   └── extractAuthHeaders.ts    # Helper function to extract authentication-related headers
+│   ├── utils/
+│   │   └── fileUtils.ts             # Helper functions for writing data to files (JSON, text)
 │   └── processHarFile.ts            # Main logic for processing HAR file
 │
 ├── tests/
@@ -29,7 +32,8 @@ deno-har-parser/
 ├── .gitignore                       # Git ignore file for the project
 ├── deno.json                        # Deno configuration file
 ├── README.md                        # Documentation for the project
-└── network.har                      # Sample HAR file for testing
+├── network.har                      # Sample HAR file for testing
+└── example.network.har              # Example HAR file for testing
 ```
 
 ## Setup
@@ -47,21 +51,26 @@ cd deno-har-parser
 
 ### Running the Script
 
-1. Place your `.har` file in the root directory, or use the provided `network.har` as a sample.
+1. Place your `.har` file in the root directory, or use the provided `network.har` or `example.network.har` as a sample.
 2. Run the script:
 
 ```bash
-deno run --allow-read ./src/processHarFile.ts
+deno task start
 ```
 
-The script will extract and log the URL, HTTP method, query parameters, POST data, response status, and any authentication-related headers (Authorization, Cookies, Tokens, etc.).
+The script will ask you to choose the output format: either `json` or `text`. Based on your selection, it will save the extracted data in `output.json` or `output.txt`.
+
+### Output Options
+
+- **JSON Output**: If you choose `json`, the output will be saved as `output.json`.
+- **Text Output**: If you choose `text`, the output will be saved as `output.txt`.
 
 ### Testing
 
 To run the tests:
 
 ```bash
-deno test
+deno task test
 ```
 
 ### Configuration (Optional)
