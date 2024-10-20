@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "deno run --allow-read src/processHarFile.ts",
+    "start": "deno run --allow-read --allow-write start.ts",
     "test": "deno test --allow-read"
   },
   "imports": {
