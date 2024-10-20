@@ -1,0 +1,11 @@
+{
+    "name": "deno-har-parser",
+    "version": "1.0.0",
+    "description": "A simple Deno TypeScript script to parse HAR files.",
+    "scripts": {
+      "start": "deno run --allow-read src/processHarFile.ts",
+      "test": "deno test --allow-read"
+    },
+    "license": "MIT"
+  }
+  

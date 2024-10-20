@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "start": "deno run --allow-read src/processHarFile.ts",
+    "test": "deno test --allow-read"
+  },
+  "imports": {
+    "@/": "./src/",
+    "@oak/oak": "jsr:@oak/oak@^17.1.0",
+    "@std/assert": "jsr:@std/assert@^1.0.6"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.ns", "dom"]
+  }
+}
